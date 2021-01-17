@@ -13,7 +13,7 @@ code {
 }
 
 /* Make the slider thumbs (volume, audio progress) move smoothly */
-.smooth-slider .MuiSlider-thumb {
+.smooth-slider .MuiSlider-thumb:not(.MuiSlider-active) {
   transition: left 0.15s linear 0s;
 }
 .smooth-slider .MuiSlider-track {
