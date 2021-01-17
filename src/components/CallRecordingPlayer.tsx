@@ -96,7 +96,7 @@ export function CallRecordingPlayer() {
     };
 
     const onAudioPlayer_duration = (seconds: number) => {
-        setDuration(Math.round(seconds));
+        setDuration(Math.ceil(seconds));
     };
 
     const onAudioPlayer_ended = () => {
@@ -105,7 +105,7 @@ export function CallRecordingPlayer() {
 
     const onAudioPlayer_progress = (state: any) => {
         setPlayed(state.played);
-        setPlayedSeconds(Math.round(state.playedSeconds));
+        setPlayedSeconds(Math.ceil(state.playedSeconds));
     };
 
 
@@ -127,7 +127,7 @@ export function CallRecordingPlayer() {
                         <Typography>
                             {formatSeconds(playedSeconds)}
                         </Typography>
-                        <Slider style={{ width: 275 }} min={0} max={0.999999} value={played} />
+                        <Slider className="smooth-slider" style={{ width: 275 }} min={0} max={0.999999} value={played} />
                         <Typography>
                             {formatSeconds(duration)}
                         </Typography>
@@ -179,7 +179,7 @@ export function CallRecordingPlayer() {
                                         : <VolumeUpOutlined />
                             }
                         </IconButton>
-                        <Slider style={{ width: 80 }} min={0} max={0.999999} value={volume} />
+                        <Slider className="smooth-slider" style={{ width: 80 }} min={0} max={0.999999} value={volume} />
                         <IconButton onClick={onShareButton_click}>
                             <ShareOutlined />
                         </IconButton>
@@ -191,9 +191,7 @@ export function CallRecordingPlayer() {
             </Grid>
         </Grid>
         <ReactPlayer
-            ref={(player) => {
-                setAudioPlayer(player);
-            }}
+            ref={setAudioPlayer}
 
             muted={muted}
             url={url}
@@ -201,6 +199,8 @@ export function CallRecordingPlayer() {
             played={played}
             playing={playing}
             volume={volume}
+
+            progressInterval={1000 * 0.1 /* Set to 0.05 less than the smooth-slider transition length */}
 
             onDuration={onAudioPlayer_duration}
             onEnded={onAudioPlayer_ended}

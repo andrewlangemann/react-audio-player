@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Make the slider thumbs (volume, audio progress) move smoothly */
+.smooth-slider .MuiSlider-thumb {
+  transition: left 0.15s linear 0s;
+}
+.smooth-slider .MuiSlider-track {
+  transition: width 0.15s linear 0s;
+}
