@@ -19,3 +19,14 @@ code {
 .smooth-slider .MuiSlider-track {
   transition: width 0.15s linear 0s;
 }
+
+.app-bar {
+  background-color: #2574BB;
+}
+
+.audio-player-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
